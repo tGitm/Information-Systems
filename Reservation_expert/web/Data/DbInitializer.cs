@@ -8,11 +8,35 @@ namespace web.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(SchoolContext context)
+        public static void Initialize(RestaurantContext context)
         {
             context.Database.EnsureCreated();
 
-            // Look for any students.
+            var reservations = new Reservation[]
+            {
+                //DateTime assigns                                                   year, month, day, hour, min, seconds
+                new Reservetion{TableID=1,NumberOfGuest=5,DateOfReservation=DateTime("2020, 4, 20, 15, 10, 40")},
+                new Reservetion{TableID=2,NumberOfGuest=7,DateOfReservation=DateTime("2020, 4, 22, 11, 10, 20")},
+                new Reservetion{TableID=2,NumberOfGuest=2,DateOfReservation=DateTime("2020, 6, 11, 17, 05, 15")},
+            };
+
+            //loopam čez rezervacije in jih dodajam v entiteto
+            foreach (Reservation r in reservations) {
+                context.Reservations.add(r);
+            }
+            context.SaveChanges();
+
+            var guests = new Guest[]
+            {
+                new Guest{}
+            }
+
+            foreach (Guest g in guests) {
+                context.Guests.add(g);
+            }
+            context.SaveChanges();
+
+            /*// Look for any students.
             if (context.Students.Any())
             {
                 return;   // DB has been seeded
@@ -122,7 +146,7 @@ namespace web.Data
             }
 
 
-            context.SaveChanges();
+            context.SaveChanges();*/
         }
     }
 }

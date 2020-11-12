@@ -9,4 +9,4 @@ IF NOT EXISTS (
         WHERE name = N'University'
 )
 CREATE DATABASE University
-GO 
+GO

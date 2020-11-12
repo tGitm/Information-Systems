@@ -13,4 +13,3 @@ namespace web.Models
         public ICollection<Enrollment> Enrollments { get; set; }
     }
 }
-
